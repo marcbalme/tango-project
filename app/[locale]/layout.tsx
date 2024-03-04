@@ -1,8 +1,12 @@
 import type { Metadata } from "next";
-import { Merriweather_Sans } from "next/font/google";
-import "../globals.css";
+import { Merriweather_Sans as FontSans } from "next/font/google";
+import "../../styles/globals.css";
+import { cn } from "@/lib/utils";
 
-const merriweather = Merriweather_Sans({ subsets: ["latin"] });
+const fontSans = FontSans({
+    subsets: ["latin"],
+    variable: "--font-sans",
+});
 
 export const metadata: Metadata = {
     title: "Create Next App",
@@ -20,7 +24,10 @@ export default function RootLayout({
         <html suppressHydrationWarning={true} lang={locale}>
             <body
                 suppressHydrationWarning={true}
-                className={merriweather.className}
+                className={cn(
+                    "min-h-screen bg-background font-sans antialiased",
+                    fontSans.variable
+                )}
             >
                 {children}
             </body>
